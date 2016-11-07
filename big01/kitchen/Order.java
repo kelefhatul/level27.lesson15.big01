@@ -16,15 +16,16 @@ public class Order {
     public Order(Tablet tablet) throws IOException{
         this.tablet = tablet;
         dishes = ConsoleHelper.getAllDishesForOrder();
+
     }
 
     @Override
     public String toString() {
-        String result="NO ORDER";
+        String result="";
         if (dishes.size() ==0 || dishes ==null){
             return result;
         }
-        result = "Your order: " + dishes + tablet.toString();
+        result = "Your order: " + dishes +" of " + tablet.toString();
         return result;
     }
 }
