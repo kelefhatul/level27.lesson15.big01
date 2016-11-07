@@ -13,9 +13,12 @@ public class Order {
     private Tablet tablet;
     private List<Dish> dishes;
 
+    public Order() {
+    }
+
     public Order(Tablet tablet) throws IOException{
         this.tablet = tablet;
-        dishes = ConsoleHelper.getAllDishesForOrder();
+        this.dishes = ConsoleHelper.getAllDishesForOrder();
 
     }
 
@@ -27,5 +30,16 @@ public class Order {
         }
         result = "Your order: " + dishes +" of " + tablet.toString();
         return result;
+    }
+
+    public int getTotalCookingTime(){
+            int sum=0;
+            for (Dish dishFromList: dishes
+                 ) {
+                sum +=dishFromList.getDuration();
+            }
+            return sum;
+    }
+        return dishes.size()==0 || dishes==null;
     }
 }

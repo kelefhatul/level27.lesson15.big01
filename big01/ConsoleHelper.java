@@ -39,7 +39,7 @@ public class ConsoleHelper {
             try {
                 orderList.add(Dish.valueOf(tmp));
             } catch (IllegalArgumentException e) {
-                writeMessage("no such dish: " + tmp);
+                writeMessage(tmp + " is not detected");
                 continue;
             }
 

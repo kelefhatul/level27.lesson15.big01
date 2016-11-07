@@ -3,9 +3,7 @@ package com.javarush.test.level27.lesson15.big01;
 import com.javarush.test.level27.lesson15.big01.kitchen.Order;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.logging.*;
 
 /**
@@ -14,7 +12,6 @@ import java.util.logging.*;
 public class Tablet extends Observable {
     private int number;
     final static Logger logger = Logger.getLogger(Tablet.class.getName());
-    private List<Observer> observers;
 
     public Tablet(int number) {
         this.number = number;
@@ -24,9 +21,11 @@ public class Tablet extends Observable {
         Order order = null;
         try {
             order = new Order(this);
+            if (!order.isEmpty()){
             ConsoleHelper.writeMessage(order.toString());
             setChanged();
             notifyObservers(order);
+            }
         } catch (IOException ioe) {
             logger.log(Level.SEVERE, "Console is unavailable.");
         }
