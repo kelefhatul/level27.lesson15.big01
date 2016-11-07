@@ -40,6 +40,7 @@ public class Order {
             }
             return sum;
     }
+    public boolean isEmpty(){
         return dishes.size()==0 || dishes==null;
     }
 }
