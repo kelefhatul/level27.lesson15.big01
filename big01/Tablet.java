@@ -1,5 +1,6 @@
 package com.javarush.test.level27.lesson15.big01;
 
+import com.javarush.test.level27.lesson15.big01.ad.AdvertisementManager;
 import com.javarush.test.level27.lesson15.big01.kitchen.Order;
 
 import java.io.IOException;
@@ -22,10 +23,11 @@ public class Tablet extends Observable {
         try {
             order = new Order(this);
             if (!order.isEmpty()){
-            ConsoleHelper.writeMessage(order.toString());
-            setChanged();
-            notifyObservers(order);
+                ConsoleHelper.writeMessage(order.toString());
+                setChanged();
+                notifyObservers(order);
             }
+            new AdvertisementManager(order.getTotalCookingTime()).processVideos();
         } catch (IOException ioe) {
             logger.log(Level.SEVERE, "Console is unavailable.");
         }
